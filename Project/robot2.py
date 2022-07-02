@@ -79,20 +79,7 @@ class MyRobot1(RCJSoccerRobot):
                 self.right_motor.setVelocity(vr)
 
                 if Error < 1e-5:
-                    Error_y = ball_data["strength"]
-                    print(robot_pos)
-                    sum_Error_y += Error_y * 0.1
-                    Error_d_y = (Error_y - Error_back_y) / 0.1
-                    Error_back_y = Error_y
-
-                    w = 0
-                    # v = kp_y * Error_y + ki_y * sum_Error_y + kd_y * Error_d_y
-                    v = control_y.output(Error_y)
-                    R = 0.02
-                    L = 0.08
-
-                    vr = (2 * v - L * w) / (2 * R)
-                    vl = (2 * v + L * w) / (2 * R)
+                    Error_y = ball_data["strength"] + 0.2
 
                     self.left_motor.setVelocity(vl)
                     self.right_motor.setVelocity(vr)
